@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- maven版本 -->
+	<modelVersion>4.0.0</modelVersion>
+	<!-- 组织机构标识 -->
+	<groupId>com.imooc</groupId>
+	<!-- 项目名 -->
+	<artifactId>HelloMaven</artifactId>
+	<!-- 版本号 -->
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 打包方式 -->
+	<packaging>war</packaging>
+	
+	<!-- 指定依赖 -->
+	<dependencies>
+		<dependency>
+			<!-- 坐标 -->
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<!-- 让servlet在运行时失效,tomcat内置有servlet的jar包 -->
+			<!-- 导入servlet,jsp的jar包依赖范围一定选择：provided -->
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	
+	<!-- 指定特殊的配置 -->
+	<build>
+		<plugins>
+			<!-- 指定JDK的版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			
+			<!-- 指定Tomcat7 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<!-- 自定义端口号,默认端口号不能使用 -->
+					<port>9999</port>
+					<!-- 自定义项目访问路径,默认访问路径不能使用 -->
+					<path>/hi</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
